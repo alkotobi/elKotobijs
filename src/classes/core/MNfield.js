@@ -19,7 +19,7 @@ export default class MNfield {
             this.required=false,
             this.visible=true
     }
-
+ 
     static createIdField(){
         return      {
             name: 'ID',
