@@ -1,4 +1,4 @@
-import MNtypes from "./Types";
+import { Fieldwidth, Errors, FieldTypes } from "./Types";
 import MNvalidation from './MNvalidation'
 
 export default class MNfield {
@@ -10,27 +10,30 @@ export default class MNfield {
      */
 
     constructor(name, value, width) {
-        if (MNvalidation.isNotNullUndi(name)) { this.name = name } else { return undefined }
+        if (MNvalidation.isNotNullUndi(name)) { this.name = name } else {
+            // throw Errors.NullValueError
+            return undefined
+        }//its return {} in this case???
         this.type = (MNvalidation.isNotNullUndi(value)) ? typeof value : 'string',
             this.label = name,
-            this.width = MNvalidation.isNotNullUndi(width) ? width :MNtypes.Fieldwidth.xs,
+            this.width = MNvalidation.isNotNullUndi(width) ? width : Fieldwidth.xs,
             this.readOnly = false,
             this.value = MNvalidation.isNotNullUndi(value) ? value : '',
-            this.required=false,
-            this.visible=true
-    } 
- 
-    static createIdField(){
-        return      {
+            this.required = false,
+            this.visible = true
+    }
+
+    static createIdField() {
+        return {
             name: 'ID',
             type: 'number',
             label: 'ID',
             width: 10,
             readOnly: false,
             value: -1,
-            required:false,
-            visible:true
-          }
+            required: false,
+            visible: true
+        }
     }
     setWidthLarge() {
         this.width = Fieldwidth.large
@@ -69,13 +72,13 @@ export default class MNfield {
             throw Errors.TypeMisMatchError
         }
 
-    }    
+    }
     setVisible(blValue) {
         if (typeof blValue == FieldTypes.boolean) { this.visible = blValue } else {
             throw Errors.TypeMisMatchError
         }
 
-    }   
+    }
     setCanEdit() {
         this.readOnly = false
     }
