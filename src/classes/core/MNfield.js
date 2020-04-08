@@ -18,7 +18,7 @@ export default class MNfield {
             this.value = MNvalidation.isNotNullUndi(value) ? value : '',
             this.required=false,
             this.visible=true
-    }
+    } 
  
     static createIdField(){
         return      {
