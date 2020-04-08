@@ -5,3 +5,9 @@ test('testing constructor',()=>{
     expect(fld.width).toBe(20)
 
 })
+
+test('testing constructor with no name',()=>{
+    let fld= new MNfield()
+    expect(fld.width).toBe(undefined)
+
+})
